@@ -1,7 +1,17 @@
 {
   "packages": [
-    "packages/*"
+    "packages/backend/*",
+    "packages/frontend/*"
   ],
   "useNx": true,
-  "version": "0.0.0"
+  "version": "independent",
+  "command": {
+    "publish": {
+      "conventionalCommits": true,
+      "message": "chore(release): release"
+    },
+    "version": {
+      "push": false
+    }
+  }
 }
