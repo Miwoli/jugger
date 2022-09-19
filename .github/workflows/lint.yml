@@ -1,0 +1,12 @@
+name: Linters
+on: [pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node_version: '16'
+      - run: npm i -g eslint
+      - run: eslint .
