@@ -2,9 +2,12 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "packages/backend/*",
-    "packages/frontend/*"
+    "packages/cms/**",
+    "packages/frontend/**"
   ],
+  "scripts": {
+    "start": "lerna run start:dev --stream"
+  },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
     "lerna": "^5.1.6",
