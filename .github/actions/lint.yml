@@ -1,8 +1,0 @@
-name: Linter
-description: 'Lints the project using Eslint'
-runs:
-  using: 'composite'
-
-  steps:
-    - name: Lint
-      run: eslint .

@@ -1,6 +1,0 @@
-name: Build
-runs:
-  using: 'composite'
-  steps:
-    - name: Build
-      run: lerna run build
