@@ -1,0 +1,42 @@
+name: Deploy Develop
+on:
+  push:
+    branches:
+      - 'develop'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: miwoli/jugger/.github/workflows/setup.yml
+      - uses: miwoli/jugger/.github/workflows/lint.yml
+      - uses: miwoli/jugger/.github/workflows/build.yml
+
+      - name: 'Prepare dist'
+        run: |
+          mkdir ../build
+          cp ./packages/cms/dist' ../build/cms
+          cp ./packages/frontend/dist' ../build/frontend
+
+      - name: 'Deploy'
+        uses: appleboy/scp-action@master
+        env:
+          HOST: ${{ secrets.ADDRESS }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.KEY }}
+        with:
+          source: '../build/**'
+          target: '/var/www/jugger/${{ DEVELOP_URL }}'
+
+      - name: 'Execute remote'
+        uses: appleboy/ssh-action@master
+        with:
+          HOST: ${{ secrets.ADDRESS }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.KEY }}
+          script: ls
+          # script: |
+          #   cd /var/www/jugger/${{ DEVELOP_URL }}
+          #   pm2 restart jugger

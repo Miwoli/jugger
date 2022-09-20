@@ -1,11 +1,11 @@
-name: Linter
-on: 
+name: Build
+on:
   pull_request:
   workflow_call:
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: miwoli/jugger/.github/workflows/setup.yml
-      - name: Lint
-        run: eslint .
+      - name: Build
+        run: lerna run build
