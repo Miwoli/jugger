@@ -1,9 +1,8 @@
 name: Linter
-on: 
-  workflow_call:
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Lint
-        run: eslint .
+description: 'Lints the project using Eslint'
+runs:
+  using: 'composite'
+
+  steps:
+    - name: Lint
+      run: eslint .

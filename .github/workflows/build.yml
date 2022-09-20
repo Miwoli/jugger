@@ -1,9 +1,6 @@
 name: Build
-on:
-  workflow_call:
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build
-        run: lerna run build
+runs:
+  using: 'composite'
+  steps:
+    - name: Build
+      run: lerna run build
