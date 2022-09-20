@@ -7,7 +7,7 @@ jobs:
   deploy:
 
     runs-on: ubuntu-latest
-    environment: Miwoli OVH VPS'
+    environment: Miwoli OVH VPS
 
     steps:
       - uses: actions/checkout@v3
