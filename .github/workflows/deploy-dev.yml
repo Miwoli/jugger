@@ -42,7 +42,7 @@ jobs:
     
       - name: Build
         run: npm run build
-        
+
       - name: 'Prepare dist'
         run: |
           mkdir ../build
@@ -58,7 +58,7 @@ jobs:
           KEY: ${{ secrets.KEY }}
         with:
           source: '../build/**'
-          target: '/var/www/jugger/${{ DEVELOP_URL }}'
+          target: '/var/www/jugger/${{ secrets.DEVELOP_URL }}'
 
       - name: 'Execute remote'
         uses: appleboy/ssh-action@master
