@@ -32,8 +32,8 @@ jobs:
       - name: Install dependencies
         run: npm i -g eslint lerna && npm ci && lerna bootstrap
 
-      - name: Install TypeScript Eslint plugin
-        run: cd ~ && npm i @typescript-eslint/eslint-plugin
+      - name: Install Eslint plugins
+        run: cd ~ && npm i @typescript-eslint/eslint-plugin && npm i eslint-config-prettier
 
       - name: Lint
         run: eslint .
