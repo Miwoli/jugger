@@ -41,8 +41,8 @@ jobs:
       - name: 'Prepare dist'
         run: |
           mkdir ../build
-          cp ./packages/cms/dist' ../build/cms
-          cp ./packages/frontend/dist' ../build/frontend
+          cp ./packages/cms/dist ../build/cms
+          cp ./packages/frontend/dist ../build/frontend
 
       - name: 'Deploy'
         uses: appleboy/scp-action@master
