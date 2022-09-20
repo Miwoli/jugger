@@ -65,5 +65,5 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.KEY }}
           script: |
-            cd /var/www/jugger/${{ DEVELOP_URL }}
+            cd /var/www/jugger/${{ secrets.DEVELOP_URL }}
             ls
