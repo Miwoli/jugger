@@ -1,10 +1,7 @@
 name: Build
 on:
-  pull_request:
   workflow_call:
 jobs:
-  setup:
-    uses: ./.github/workflows/setup.yml
   build:
     runs-on: ubuntu-latest
     steps:

@@ -1,10 +1,7 @@
 name: Linter
 on: 
-  pull_request:
   workflow_call:
 jobs:
-  setup:
-    uses: ./.github/workflows/setup.yml
   lint:
     runs-on: ubuntu-latest
     steps:
