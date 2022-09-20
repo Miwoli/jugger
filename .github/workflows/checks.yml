@@ -3,10 +3,10 @@ on:
   pull_request:
 jobs:
   setup:
-    uses: ./.github/workflows/setup.yml
+    uses: ./.github/actions/setup.yml
   lint:
     needs: setup
-    uses: ./.github/workflows/lint.yml
+    uses: ./.github/actions/lint.yml
   build:
     needs: setup
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/actions/build.yml
