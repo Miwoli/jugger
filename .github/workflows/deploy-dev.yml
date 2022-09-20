@@ -5,13 +5,13 @@ on:
       - 'develop'
 jobs:
   setup:    
-    uses: ./.github/actions/setup.yml
+    uses: ./.github/actions/setup.yml@v1
   lint:
     needs: setup
-    uses: ./.github/actions/lint.yml
+    uses: ./.github/actions/lint.yml@v1
   build:
     needs: setup
-    uses: ./.github/actions/build.yml
+    uses: ./.github/actions/build.yml@v1
 
   deploy:
     needs: [setup, lint, build]
