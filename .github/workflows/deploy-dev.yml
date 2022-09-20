@@ -7,7 +7,7 @@ jobs:
   deploy:
 
     runs-on: ubuntu-latest
-    environment: Miwoli OVH VPS
+    environment: Miwoli OVH VPS'
 
     steps:
       - uses: actions/checkout@v3
@@ -42,9 +42,9 @@ jobs:
       - name: 'Prepare dist'
         run: |
           mkdir ../build
-          cp -r ./packages/cms/dist ../build/cms
-          cp -r ./packages/frontend/dist ../build/frontend
-          tar -zcvf build.tar ../build
+          cp -tr ./packages/cms/dist ../build/cms
+          cp -tr ./packages/frontend/dist/frontend ../build/frontend
+          tar -cvf deploy.tar ../build/
 
       - name: 'Deploy'
         uses: appleboy/scp-action@master
@@ -54,7 +54,7 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.KEY }}
         with:
-          source: '../build.tar.gz'
+          source: 'deploy.tar'
           target: '/var/www/jugger/${{ secrets.DEVELOP_URL }}'
 
       - name: 'Execute remote'
@@ -65,6 +65,5 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.KEY }}
           script: |
-            cd /var/www/jugger/${{ secrets.DEVELOP_URL }}
-            tar -xvzf build.tar
+            cd /var/www/jugger/${{ DEVELOP_URL }}
             ls
