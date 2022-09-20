@@ -42,8 +42,8 @@ jobs:
       - name: 'Prepare dist'
         run: |
           mkdir ../build
-          cp -tr ./packages/cms/dist ../build/cms
-          cp -tr ./packages/frontend/dist/frontend ../build/frontend
+          cp -r ./packages/cms/dist ../build/cms
+          cp -r ./packages/frontend/dist/frontend ../build/frontend
           tar -cvf deploy.tar ../build/
 
       - name: 'Deploy'
