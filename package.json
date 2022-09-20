@@ -6,7 +6,10 @@
     "packages/frontend/**"
   ],
   "scripts": {
-    "start": "lerna run start:dev --stream"
+    "start": "lerna run start:dev --stream",
+    "bootstrap": "lerna bootstrap",
+    "lint": "eslint .",
+    "build": "lerna run build"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.38.0",
