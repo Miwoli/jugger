@@ -3,9 +3,10 @@ on:
   pull_request:
   workflow_call:
 jobs:
+  setup:
+    uses: ./.github/workflows/setup.yml
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: miwoli/jugger/.github/workflows/setup.yml@v1
       - name: Build
         run: lerna run build

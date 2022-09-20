@@ -4,14 +4,17 @@ on:
     branches:
       - 'develop'
 jobs:
+  setup:    
+    uses: ./.github/workflows/setup.yml
+  lint:
+    uses: ./.github/workflows/lint.yml
+  build:
+    uses: ./.github/workflows/build.yml
+    
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: miwoli/jugger/.github/workflows/setup.yml@v1
-      - uses: miwoli/jugger/.github/workflows/lint.yml@v1
-      - uses: miwoli/jugger/.github/workflows/build.yml@v1
-
       - name: 'Prepare dist'
         run: |
           mkdir ../build
