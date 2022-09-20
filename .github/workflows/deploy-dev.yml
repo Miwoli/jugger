@@ -4,12 +4,7 @@ on:
     branches:
       - 'develop'
 jobs:
-  lint:
-    needs: setup
-    uses: ./.github/workflows/lint.yml
-
   deploy:
-    needs: lint
 
     runs-on: ubuntu-latest
 
