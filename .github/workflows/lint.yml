@@ -6,6 +6,6 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: miwoli/jugger/.github/workflows/setup.yml
+      - uses: miwoli/jugger/.github/workflows/setup.yml@v1
       - name: Lint
         run: eslint .

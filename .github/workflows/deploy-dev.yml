@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: miwoli/jugger/.github/workflows/setup.yml
-      - uses: miwoli/jugger/.github/workflows/lint.yml
-      - uses: miwoli/jugger/.github/workflows/build.yml
+      - uses: miwoli/jugger/.github/workflows/setup.yml@v1
+      - uses: miwoli/jugger/.github/workflows/lint.yml@v1
+      - uses: miwoli/jugger/.github/workflows/build.yml@v1
 
       - name: 'Prepare dist'
         run: |
