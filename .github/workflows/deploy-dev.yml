@@ -44,7 +44,7 @@ jobs:
           mkdir ../build
           cp -r ./packages/cms/dist ../build/cms
           cp -r ./packages/frontend/dist/frontend ../build/frontend
-          tar -cvf deploy.tar ../build/
+          tar -czvf build.tar.gz ../build/
 
       - name: 'Deploy'
         uses: appleboy/scp-action@master
@@ -54,7 +54,7 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.KEY }}
         with:
-          source: 'deploy.tar'
+          source: 'build.tar.gz'
           target: '/var/www/jugger/${{ secrets.DEVELOP_URL }}'
 
       - name: 'Execute remote'
@@ -66,4 +66,4 @@ jobs:
           KEY: ${{ secrets.KEY }}
           script: |
             cd /var/www/jugger/${{ secrets.DEVELOP_URL }}
-            ls
+            tar -xzvf build.tar.gz
