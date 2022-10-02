@@ -75,6 +75,7 @@ export class MapComponent implements OnInit {
     this.map.forEachFeatureAtPixel(event.pixel, feature => {
       this.selected = feature
 
+      console.log(feature)
       return true
     })
 
