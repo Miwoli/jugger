@@ -1,0 +1,23 @@
+@use '../../../assets/styles/vars' as vars;
+
+button {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background: linear-gradient(45deg, vars.$color-primary-shade-first, vars.$color-primary-shade-second, vars.$color-primary-shade-first);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  color: white;
+  box-shadow: 2px 2px 5px black;
+
+  transition: background-position .3s ease-in-out, box-shadow .3s ease-in-out;
+
+  &:hover {
+    background-position: 100% 0%;
+    box-shadow: 5px 5px 5px black;
+  }
+
+  span {
+    margin-right: 5px;
+  }
+}
