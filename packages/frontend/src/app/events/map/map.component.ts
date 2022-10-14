@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { AfterViewInit, Component, OnInit } from '@angular/core'
 import { View, Map, Feature, MapBrowserEvent } from 'ol'
 import { FeatureLike } from 'ol/Feature'
 import { Point } from 'ol/geom'
@@ -14,7 +14,7 @@ import { Event } from '../../core/models/event'
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, AfterViewInit {
   public map!: Map
   public status!: Pick<Event, 'attributes'>
 
@@ -32,6 +32,14 @@ export class MapComponent implements OnInit {
       })
     })
 
+    // this.map.on('singleclick', event => {
+    //   this.newEvent(event.coordinate)
+    // })
+
+    // this.eventService.getEvents().subscribe(events => console.log(events))
+  }
+
+  ngAfterViewInit(): void {
     this.map = new Map({
       layers: [
         new TileLayer({
@@ -41,7 +49,7 @@ export class MapComponent implements OnInit {
       ],
       target: 'map',
       view: new View({
-        center: [2136892.5950993, 6824785.106882159], // Coords of somewhere in the center of Poland
+        center: [2137892.5950993, 6824785.106882159], // Coords of somewhere in the center of Poland
         zoom: 6,
         maxZoom: 18
       })
@@ -51,12 +59,6 @@ export class MapComponent implements OnInit {
       this.selected = null
       this.onPointerMove(event)
     })
-
-    // this.map.on('singleclick', event => {
-    //   this.newEvent(event.coordinate)
-    // })
-
-    // this.eventService.getEvents().subscribe(events => console.log(events))
   }
 
   private getEvents(): void {

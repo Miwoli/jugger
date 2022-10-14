@@ -2,30 +2,14 @@
 
 :host {
   padding: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .events {
-  max-height: calc(100vh - vars.$header-1-font-size - 20px);
   overflow: auto;
-}
-
-.event {
-  .desc {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-  }
-
-  &.selected,
-  &:hover {
-    .desc {
-      -webkit-line-clamp: initial;
-      line-clamp: initial;
-    }
-  }
+  height: 100%;
 }
 
 .event:not(:first-child) {

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Miwoli/jugger/compare/frontend@0.3.0...frontend@0.4.0) (2022-10-14)
+
+
+### Features
+
+* create basic app layour with header, empty footer and responsive content ([bb17718](https://github.com/Miwoli/jugger/commit/bb17718a743fe2730ab62b8ab3ef2765a275214f))
+
+
+
+
+
 # [0.3.0](https://github.com/Miwoli/jugger/compare/frontend@0.1.0...frontend@0.3.0) (2022-10-02)
 
 
