@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'api.jugger.pl'
+  apiUrl: 'develop.api.jugger.pl'
 }
