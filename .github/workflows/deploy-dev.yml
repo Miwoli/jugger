@@ -67,3 +67,4 @@ jobs:
           script: |
             cd /var/www/jugger/${{ secrets.DEVELOP_URL }}
             tar -xzvf build.tar.gz
+            cp /var/www/jugger/${{ secrets.DEVELOP_URL }}/develop.env /var/www/jugger/${{ secrets.DEVELOP_URL }}/build/cms/.env

@@ -9,7 +9,8 @@
     "start": "lerna run start:dev --stream",
     "bootstrap": "lerna bootstrap",
     "lint": "eslint .",
-    "build": "lerna run build"
+    "build": "lerna run build",
+    "build:develop": "lerna run build:develop"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.38.0",
