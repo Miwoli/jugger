@@ -43,6 +43,8 @@ jobs:
         run: |
           mkdir ../build
           cp -r ./packages/cms/dist ../build/cms
+          cp ./packages/cms/package.json ../build/cms/package.json
+          cp ./packages/cms/server.js ../build/cms/server.js
           cp -r ./packages/frontend/dist/frontend ../build/frontend
           tar -czvf build.tar.gz ../build/
 
@@ -68,3 +70,4 @@ jobs:
             cd /var/www/jugger/${{ secrets.DEVELOP_URL }}
             tar -xzvf build.tar.gz
             cp /var/www/jugger/${{ secrets.DEVELOP_URL }}/develop.env /var/www/jugger/${{ secrets.DEVELOP_URL }}/build/cms/.env
+            pm2 restart develop_jugger
