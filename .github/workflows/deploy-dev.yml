@@ -42,9 +42,7 @@ jobs:
       - name: 'Prepare dist'
         run: |
           mkdir ../build
-          cp -r ./packages/cms/dist ../build/cms
-          cp ./packages/cms/package.json ../build/cms/package.json
-          cp ./packages/cms/server.js ../build/cms/server.js
+          cp -r ./packages/cms/ ../build/cms
           cp -r ./packages/frontend/dist/frontend ../build/frontend
           tar -czvf build.tar.gz ../build/
 
