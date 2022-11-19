@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Miwoli/jugger/compare/frontend@0.2.0...frontend@0.5.0) (2022-11-19)
+
+
+### Bug Fixes
+
+* **angular.json:** fixed ol styles import ([11cf359](https://github.com/Miwoli/jugger/commit/11cf359fe94179b1953686e220201efda2e37260))
+
+
+### Features
+
+* create basic app layour with header, empty footer and responsive content ([bb17718](https://github.com/Miwoli/jugger/commit/bb17718a743fe2730ab62b8ab3ef2765a275214f))
+* **list:** create event list component ([708ff29](https://github.com/Miwoli/jugger/commit/708ff29044b7f1c9812e57563335bf7faa2beb69))
+* prepare Strapi for develop deployment ([9913f5c](https://github.com/Miwoli/jugger/commit/9913f5ce5ccbb6456bec4853e65e92921a2da111))
+
+
+
+
+
 # [0.4.0](https://github.com/Miwoli/jugger/compare/frontend@0.3.0...frontend@0.4.0) (2022-10-14)
 
 
