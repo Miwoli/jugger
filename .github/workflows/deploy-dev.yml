@@ -36,6 +36,12 @@ jobs:
       - name: Install dependencies
         run: npm ci && npm run bootstrap
     
+      - name: One time rxjs fix
+        run: npm link rxjs
+
+      - name: One time lerna nx fix
+        run: npx nx reset
+
       - name: Build
         run: npm run build
 
