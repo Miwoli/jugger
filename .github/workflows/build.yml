@@ -35,7 +35,7 @@ jobs:
         run: npm link rxjs
 
       - name: One time lerna nx fix
-        run: nx reset
+        run: npx nx reset
 
       - name: Build
         run: npm run build
