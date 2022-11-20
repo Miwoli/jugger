@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Miwoli/jugger/compare/frontend@0.5.0...frontend@0.6.0) (2022-11-20)
+
+
+### Features
+
+* setup frontend to read events from api ([b9b62ad](https://github.com/Miwoli/jugger/commit/b9b62ad723349f9b1353d8e234d8f6e3073611e4))
+
+
+
+
+
 # [0.5.0](https://github.com/Miwoli/jugger/compare/frontend@0.2.0...frontend@0.5.0) (2022-11-19)
 
 
