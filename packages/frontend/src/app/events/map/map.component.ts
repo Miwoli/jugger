@@ -18,7 +18,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   public map!: Map
   public status!: Pick<Event, 'attributes'>
 
-  private pointsLayer!: VectorLayer<VectorSource>
+  public pointsLayer!: VectorLayer<VectorSource>
   private selected!: FeatureLike | null
   private events: Feature[] = []
 
@@ -70,6 +70,8 @@ export class MapComponent implements OnInit, AfterViewInit {
             attributes: event.attributes
           })
       )
+
+      this.pointsLayer.getSource()?.addFeatures(this.events)
     })
   }
 
