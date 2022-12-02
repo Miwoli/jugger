@@ -1,9 +1,13 @@
 import { Component } from '@angular/core'
 @Component({
-  selector: 'app-root',
+  selector: 'jugger-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend'
+  public isMenuOpened: boolean = false
+
+  public onMenuClicked(): void {
+    this.isMenuOpened = !this.isMenuOpened
+  }
 }

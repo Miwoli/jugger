@@ -1,0 +1,14 @@
+@use '../../assets/styles/vars' as vars;
+
+.wrapper {
+  height: calc(100vh - vars.$overlay-height);
+  padding: 10px;
+}
+
+mat-card {
+  margin-bottom: 10px;
+}
+
+mat-card:last-of-type() {
+  margin-bottom: 0;
+}

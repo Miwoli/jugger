@@ -5,6 +5,11 @@
   height: 100%;
 }
 
-main {
-  min-height: 100%;
+main,
+mat-drawer-container {
+  height: 100%;
+}
+
+mat-drawer {
+  padding: 10px;
 }

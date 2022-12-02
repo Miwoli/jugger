@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { IconButtonComponent } from './icon-button/icon-button.component'
-import { ModalService } from './modal/modal.service';
-import { ModalComponent } from './modal/modal.component'
+import { MaterialModule } from './material/material.module'
 
 @NgModule({
-  declarations: [IconButtonComponent, ModalComponent],
-  providers: [ModalService],
-  imports: [CommonModule],
-  exports: [IconButtonComponent]
+  declarations: [],
+  providers: [],
+  imports: [CommonModule, MaterialModule],
+  exports: [MaterialModule]
 })
 export class SharedModule {}

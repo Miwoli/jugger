@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IconButtonComponent } from './icon-button.component';
+import { PrivacyPolicyComponent } from './privacy-policy.component';
 
-describe('IconButtonComponent', () => {
-  let component: IconButtonComponent;
-  let fixture: ComponentFixture<IconButtonComponent>;
+describe('PrivacyPolicyComponent', () => {
+  let component: PrivacyPolicyComponent;
+  let fixture: ComponentFixture<PrivacyPolicyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IconButtonComponent ]
+      declarations: [ PrivacyPolicyComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(IconButtonComponent);
+    fixture = TestBed.createComponent(PrivacyPolicyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

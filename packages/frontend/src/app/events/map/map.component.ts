@@ -10,7 +10,7 @@ import { EventService } from 'src/app/core/services/event.service'
 import { Event } from '../../core/models/event'
 
 @Component({
-  selector: 'app-map',
+  selector: 'jugger-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
