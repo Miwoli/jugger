@@ -1,5 +1,12 @@
-<app-nav></app-nav>
+<jugger-nav (menuClicked)="onMenuClicked()"></jugger-nav>
 <main>
-  <router-outlet></router-outlet>
+  <mat-drawer-container>
+    <mat-drawer mode="over" [(opened)]="isMenuOpened">
+      <jugger-sidenav></jugger-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
 </main>
-<app-footer></app-footer>
+<jugger-footer></jugger-footer>

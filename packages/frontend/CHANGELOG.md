@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Miwoli/jugger/compare/frontend@0.6.0...frontend@0.7.0) (2022-12-02)
+
+
+### Features
+
+* add material, refactor + create privacy policy page ([49a4370](https://github.com/Miwoli/jugger/commit/49a4370f2b0af20d4d2eccdf0472c3964deba913))
+* create auth-modal ([a44f5c6](https://github.com/Miwoli/jugger/commit/a44f5c6f59035e9e5e6ba174dfff97047ff405e9))
+* wIP: Implement modal ([39941ca](https://github.com/Miwoli/jugger/commit/39941caacc96ddbe0b7caec3270a6c0d0bdbf506))
+
+
+
+
+
 # [0.6.0](https://github.com/Miwoli/jugger/compare/frontend@0.5.0...frontend@0.6.0) (2022-11-20)
 
 

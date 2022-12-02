@@ -1,20 +1,16 @@
-@use '../../../assets/styles/vars' as vars;
-
 :host {
   z-index: 5;
 }
 
-header {
-  width: 100vw;
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: vars.$color-primary;
   padding: 10px;
   box-shadow: 2px 2px 5px black;
 
   .version {
-    font-size: .6em;
+    font-size: 0.6em;
     vertical-align: bottom;
   }
 

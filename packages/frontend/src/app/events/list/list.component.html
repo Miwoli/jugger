@@ -1,7 +1,16 @@
 <ul class="events">
-  <li *ngFor="let event of events" class="event">
-    <h2>{{ event.attributes.Title }}</h2>
+  <mat-card *ngFor="let event of events" class="event">
+    <mat-card-header>
+      <mat-card-title>
+        {{ event.attributes.Title }}
+      </mat-card-title>
+    </mat-card-header>
     <p class="desc">{{ event.attributes.Description }}</p>
-    <p>{{ event.attributes.Date | date:'short' }}</p>
-  </li>
+    <p>{{ event.attributes.Date | date: 'short' }}</p>
+  </mat-card>
+  <mat-card *ngIf="events.length === 0" class="event">
+    <mat-card-header>
+      <mat-card-title>There are no events yet</mat-card-title>
+    </mat-card-header>
+  </mat-card>
 </ul>

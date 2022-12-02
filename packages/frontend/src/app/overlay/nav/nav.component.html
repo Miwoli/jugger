@@ -1,7 +1,14 @@
-<header>
-  <h1>Jugger App <span class="version">v.{{ version }}</span></h1>
+<mat-toolbar class="header mat-elevation-z8">
+  <button mat-icon-button (click)="handleMenuClick()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1>
+    Jugger App <span class="version">v.{{ version }}</span>
+  </h1>
   <span class="actions">
-    <app-icon-button icon="login">Login</app-icon-button>
-    <app-icon-button icon="add">Create event</app-icon-button>
+    <button mat-stroked-button (click)="handleLogin()">
+      <mat-icon>login</mat-icon>
+      Login
+    </button>
   </span>
-</header>
+</mat-toolbar>

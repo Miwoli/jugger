@@ -19,7 +19,7 @@ module.exports = {
           'error',
           {
             type: 'attribute',
-            prefix: 'app',
+            prefix: 'jugger',
             style: 'camelCase'
           }
         ],
@@ -27,7 +27,7 @@ module.exports = {
           'error',
           {
             type: 'element',
-            prefix: 'app',
+            prefix: 'jugger',
             style: 'kebab-case'
           }
         ]
