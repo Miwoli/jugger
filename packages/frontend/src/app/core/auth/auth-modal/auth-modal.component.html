@@ -74,7 +74,9 @@
     {{ formError }}
   </mat-error>
 </form>
-<button (click)="toggleForgotPass()">Forgot password?</button>
+<button *ngIf="!this.data.isRegister" (click)="toggleForgotPass()">
+  {{ this.isForgotPassword ? 'Login' : 'Forgot password?' }}
+</button>
 <div mat-dialog-actions align="end">
   <button
     *ngIf="!this.isForgotPassword"
