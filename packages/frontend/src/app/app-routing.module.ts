@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { EventsComponent } from './events/events.component'
 import packageJson from '../../package.json'
+import { ResetPasswordComponent } from './core/auth/reset-password/reset-password.component'
 
 const routes: Routes = [
   {
@@ -10,6 +11,11 @@ const routes: Routes = [
       import('./privacy-policy/privacy-policy.module').then(
         m => m.PrivacyPolicyModule
       )
+  },
+  {
+    path: 'auth/reset-password',
+    pathMatch: 'full',
+    component: ResetPasswordComponent
   },
   {
     path: '',

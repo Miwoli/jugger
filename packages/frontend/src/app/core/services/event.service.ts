@@ -8,16 +8,16 @@ import { environment } from 'src/environments/environment'
 export class EventService {
   apiUrl = environment.apiUrl
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private _httpClient: HttpClient) {}
 
   public getEvents(): Observable<Event[]> {
-    return this.httpClient
+    return this._httpClient
       .get<EventsList>(`${this.apiUrl}/events`)
       .pipe(map(response => response.data))
   }
 
   public getEvent(id: number): Observable<Event> {
-    return this.httpClient.get<Event>(`${this.apiUrl}/event/${id}`)
+    return this._httpClient.get<Event>(`${this.apiUrl}/event/${id}`)
   }
 
   public createEvent(eventAttrs: EventAttributes): void {
