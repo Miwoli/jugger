@@ -2,13 +2,21 @@
   <button mat-icon-button (click)="handleMenuClick()">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1>
-    Jugger App <span class="version">v.{{ version }}</span>
-  </h1>
+  <a routerLink="">
+    <h1>
+      Jugger App <span class="version">v.{{ version }}</span>
+    </h1>
+  </a>
   <span class="actions">
     <button mat-stroked-button (click)="handleLogin()">
-      <mat-icon>login</mat-icon>
-      Login
+      <ng-container *ngIf="isLoggedIn; else login">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </ng-container>
+      <ng-template #login>
+        <mat-icon>login</mat-icon>
+        Login
+      </ng-template>
     </button>
   </span>
 </mat-toolbar>

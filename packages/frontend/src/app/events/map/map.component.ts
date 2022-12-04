@@ -19,16 +19,16 @@ export class MapComponent implements OnInit, AfterViewInit {
   public status!: Pick<Event, 'attributes'>
 
   public pointsLayer!: VectorLayer<VectorSource>
-  private selected!: FeatureLike | null
-  private events: Feature[] = []
+  private _selected!: FeatureLike | null
+  private _events: Feature[] = []
 
-  constructor(private eventService: EventService) {}
+  constructor(private _eventService: EventService) {}
 
   ngOnInit(): void {
-    this.getEvents()
+    this._getEvents()
     this.pointsLayer = new VectorLayer({
       source: new VectorSource({
-        features: this.events
+        features: this._events
       })
     })
 
@@ -56,14 +56,14 @@ export class MapComponent implements OnInit, AfterViewInit {
     })
 
     this.map.on('pointermove', event => {
-      this.selected = null
-      this.onPointerMove(event)
+      this._selected = null
+      this._onPointerMove(event)
     })
   }
 
-  private getEvents(): void {
-    this.eventService.getEvents().subscribe(events => {
-      this.events = events.map(
+  private _getEvents(): void {
+    this._eventService.getEvents().subscribe(events => {
+      this._events = events.map(
         event =>
           new Feature({
             geometry: new Point(event.attributes.Coordinates),
@@ -71,22 +71,22 @@ export class MapComponent implements OnInit, AfterViewInit {
           })
       )
 
-      this.pointsLayer.getSource()?.addFeatures(this.events)
+      this.pointsLayer.getSource()?.addFeatures(this._events)
     })
   }
 
-  private onPointerMove(event: MapBrowserEvent<MouseEvent>) {
+  private _onPointerMove(event: MapBrowserEvent<MouseEvent>) {
     this.map.forEachFeatureAtPixel(event.pixel, feature => {
-      this.selected = feature
+      this._selected = feature
 
       console.log(feature)
       return true
     })
 
-    this.status = this.selected ? this.selected.get('attributes') : ''
+    this.status = this._selected ? this._selected.get('attributes') : ''
   }
   // TODO: Use while implementing event creation
-  // private newEvent(coords: number[]): void {
+  // private _newEvent(coords: number[]): void {
   //   this.eventService.createEvent({
   //     Title: 'Lorem ipsum',
   //     Description: 'Lorem ipsum dolor sit amet',

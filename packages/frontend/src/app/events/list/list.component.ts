@@ -10,10 +10,10 @@ import { EventService } from 'src/app/core/services/event.service'
 export class ListComponent implements OnInit {
   public events: Event[] = []
 
-  constructor(private eventService: EventService) {}
+  constructor(private _eventService: EventService) {}
 
   ngOnInit(): void {
-    this.eventService.getEvents().subscribe(events => {
+    this._eventService.getEvents().subscribe(events => {
       this.events = events
     })
   }
