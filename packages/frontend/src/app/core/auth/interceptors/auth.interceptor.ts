@@ -13,9 +13,9 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private _authService: AuthService) {}
 
   intercept(
-    request: HttpRequest<unknown>,
+    request: HttpRequest<any>,
     next: HttpHandler
-  ): Observable<HttpEvent<unknown>> {
+  ): Observable<HttpEvent<any>> {
     if (this._authService.checkIfLoggedIn()) {
       request = request.clone({
         setHeaders: {
