@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core'
 import { AuthService } from 'src/app/core/auth/services/auth.service'
+import { EventService } from 'src/app/core/services/event.service'
 import packageJson from '../../../../package.json'
 
 @Component({
@@ -12,12 +13,20 @@ export class NavComponent implements OnInit {
 
   public version: string = packageJson.version
   public isLoggedIn: boolean = false
+  public isEditMode!: boolean
 
-  constructor(private _authService: AuthService) {}
+  constructor(
+    private _authService: AuthService,
+    private _eventService: EventService
+  ) {}
 
   public ngOnInit(): void {
     this._authService.$isLoggedIn.subscribe(
       isLoggedIn => (this.isLoggedIn = isLoggedIn)
+    )
+
+    this._eventService.$isCreateMode.subscribe(
+      isEditMode => (this.isEditMode = isEditMode)
     )
   }
 
@@ -27,5 +36,10 @@ export class NavComponent implements OnInit {
 
   public handleLogin(): void {
     this._authService.handleLoginProcess()
+    this._eventService.toggleCreateMode(false)
+  }
+
+  public toggleEditMode(): void {
+    this._eventService.toggleCreateMode(!this.isEditMode)
   }
 }

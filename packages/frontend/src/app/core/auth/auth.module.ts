@@ -5,7 +5,7 @@ import { AuthService } from './services/auth.service'
 import { SharedModule } from 'src/app/shared/shared.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
-import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor'
 import { ResetPasswordComponent } from './reset-password/reset-password.component'
 
 @NgModule({

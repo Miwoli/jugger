@@ -7,7 +7,7 @@ import VectorLayer from 'ol/layer/Vector'
 import { OSM } from 'ol/source'
 import VectorSource from 'ol/source/Vector'
 import { EventService } from 'src/app/core/services/event.service'
-import { Event } from '../../core/models/event'
+import { Event } from '../../core/models/Event'
 
 @Component({
   selector: 'jugger-map',
@@ -21,6 +21,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   public pointsLayer!: VectorLayer<VectorSource>
   private _selected!: FeatureLike | null
   private _events: Feature[] = []
+  private _isEditMode!: boolean
 
   constructor(private _eventService: EventService) {}
 
@@ -31,6 +32,10 @@ export class MapComponent implements OnInit, AfterViewInit {
         features: this._events
       })
     })
+
+    this._eventService.$isCreateMode.subscribe(
+      isEdit => (this._isEditMode = isEdit)
+    )
 
     // this.map.on('singleclick', event => {
     //   this.newEvent(event.coordinate)
@@ -55,19 +60,26 @@ export class MapComponent implements OnInit, AfterViewInit {
       })
     })
 
-    this.map.on('pointermove', event => {
-      this._selected = null
-      this._onPointerMove(event)
+    this.map.on('singleclick', event => {
+      if (this._isEditMode) {
+        this._eventService.selectCoordinates(event.coordinate)
+      } else {
+        this.map.forEachFeatureAtPixel(event.pixel, feature => {
+          this._eventService.selectEvent(feature.get('attributes'))
+
+          return true
+        })
+      }
     })
   }
 
   private _getEvents(): void {
-    this._eventService.getEvents().subscribe(events => {
+    this._eventService.$cachedEvents.subscribe(events => {
       this._events = events.map(
         event =>
           new Feature({
             geometry: new Point(event.attributes.Coordinates),
-            attributes: event.attributes
+            attributes: event
           })
       )
 
@@ -75,16 +87,6 @@ export class MapComponent implements OnInit, AfterViewInit {
     })
   }
 
-  private _onPointerMove(event: MapBrowserEvent<MouseEvent>) {
-    this.map.forEachFeatureAtPixel(event.pixel, feature => {
-      this._selected = feature
-
-      console.log(feature)
-      return true
-    })
-
-    this.status = this._selected ? this._selected.get('attributes') : ''
-  }
   // TODO: Use while implementing event creation
   // private _newEvent(coords: number[]): void {
   //   this.eventService.createEvent({
