@@ -8,6 +8,14 @@
     </h1>
   </a>
   <span class="actions">
+    <button *ngIf="isLoggedIn" mat-stroked-button (click)="toggleEditMode()">
+      <ng-container *ngIf="isEditMode; else edit">
+        <mat-icon>cancel</mat-icon> Cancel
+      </ng-container>
+      <ng-template #edit>
+        <mat-icon>library_add</mat-icon> Create event
+      </ng-template>
+    </button>
     <button mat-stroked-button (click)="handleLogin()">
       <ng-container *ngIf="isLoggedIn; else login">
         <mat-icon>logout</mat-icon>

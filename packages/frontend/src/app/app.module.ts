@@ -12,6 +12,8 @@ import { CoreModule } from './core/core.module'
 import { SharedModule } from './shared/shared.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { SidenavComponent } from './overlay/sidenav/sidenav.component'
+import { CreateFormComponent } from './events/create-form/create-form.component'
+import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -21,14 +23,16 @@ import { SidenavComponent } from './overlay/sidenav/sidenav.component'
     ListComponent,
     NavComponent,
     FooterComponent,
-    SidenavComponent
+    SidenavComponent,
+    CreateFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

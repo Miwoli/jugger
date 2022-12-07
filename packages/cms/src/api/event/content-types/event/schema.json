@@ -23,6 +23,11 @@
     },
     "Coordinates": {
       "type": "json"
+    },
+    "CreatedBy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }

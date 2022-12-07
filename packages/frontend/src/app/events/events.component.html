@@ -1,4 +1,7 @@
 <div class="wrapper">
   <jugger-map></jugger-map>
-  <jugger-list></jugger-list>
+  <jugger-list *ngIf="!isCreateMode; else createForm"></jugger-list>
+  <ng-template #createForm>
+    <jugger-create-form></jugger-create-form>
+  </ng-template>
 </div>

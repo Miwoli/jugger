@@ -1,10 +1,15 @@
-import { Pagination } from './pagination'
+import { Pagination } from './Pagination'
 
 export interface EventsList {
   data: Event[]
   meta: {
     pagination: Pagination
   }
+}
+
+export interface EventResponse {
+  data: Event
+  meta: {}
 }
 
 export interface Event {
@@ -17,4 +22,14 @@ export interface EventAttributes {
   Description: string
   Date: string
   Coordinates: number[]
+  CreatedBy?: Author
+}
+
+interface Author {
+  data: {
+    id: number
+    attributes: {
+      username: string
+    }
+  }
 }
