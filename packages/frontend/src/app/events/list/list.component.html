@@ -1,4 +1,4 @@
-<ul class="events">
+<!-- <ul class="events">
   <mat-card *ngFor="let event of events" class="event">
     <mat-card-header>
       <mat-card-title>
@@ -13,4 +13,25 @@
       <mat-card-title>There are no events yet</mat-card-title>
     </mat-card-header>
   </mat-card>
-</ul>
+</ul> -->
+<mat-accordion>
+  <mat-expansion-panel
+    *ngFor="let event of events"
+    [expanded]="event.id === this.selectedEvent?.id"
+    (opened)="handleOpen(event)">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ event.attributes.Title }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ event.attributes.Date | date : 'd.MM.YYYY HH:mm' }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>
+      {{ event.attributes.Description }}
+    </p>
+    <mat-action-row>
+      By: {{ event.attributes.CreatedBy?.data?.attributes?.username }}
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>

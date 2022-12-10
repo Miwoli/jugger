@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core'
-import { View, Map, Feature, MapBrowserEvent } from 'ol'
+import { View, Map, Feature } from 'ol'
 import { FeatureLike } from 'ol/Feature'
 import { Point } from 'ol/geom'
 import TileLayer from 'ol/layer/Tile'
 import VectorLayer from 'ol/layer/Vector'
 import { OSM } from 'ol/source'
 import VectorSource from 'ol/source/Vector'
+import Style from 'ol/style/Style'
 import { EventService } from 'src/app/core/services/event.service'
 import { Event } from '../../core/models/Event'
 
@@ -37,11 +38,9 @@ export class MapComponent implements OnInit, AfterViewInit {
       isEdit => (this._isEditMode = isEdit)
     )
 
-    // this.map.on('singleclick', event => {
-    //   this.newEvent(event.coordinate)
-    // })
-
-    // this.eventService.getEvents().subscribe(events => console.log(events))
+    this._eventService.$selectedEvent.subscribe(event => {
+      this._selectEvent(event)
+    })
   }
 
   ngAfterViewInit(): void {
@@ -79,12 +78,20 @@ export class MapComponent implements OnInit, AfterViewInit {
         event =>
           new Feature({
             geometry: new Point(event.attributes.Coordinates),
+            id: event.id,
             attributes: event
           })
       )
 
       this.pointsLayer.getSource()?.addFeatures(this._events)
     })
+  }
+
+  private _selectEvent(event: Event): void {
+    this.pointsLayer
+      .getSource()
+      ?.getFeatureById(event.id)
+      ?.setStyle(new Style({ fill: '#ff0000' }))
   }
 
   // TODO: Use while implementing event creation

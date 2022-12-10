@@ -55,7 +55,6 @@ export class EventService {
   }
 
   public selectEvent(event: Event): void {
-    console.log(event)
     this._selectedEvent.next(event)
   }
 }

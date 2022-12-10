@@ -27,6 +27,9 @@ export default factories.createCoreController(
 
     async find() {
       const entries = await strapi.entityService.findMany('api::event.event', {
+        sort: {
+          Date: 'asc'
+        },
         populate: {
           CreatedBy: {
             fields: ['username']
