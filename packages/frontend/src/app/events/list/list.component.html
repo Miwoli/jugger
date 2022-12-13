@@ -1,24 +1,8 @@
-<!-- <ul class="events">
-  <mat-card *ngFor="let event of events" class="event">
-    <mat-card-header>
-      <mat-card-title>
-        {{ event.attributes.Title }}
-      </mat-card-title>
-    </mat-card-header>
-    <p class="desc">{{ event.attributes.Description }}</p>
-    <p>{{ event.attributes.Date | date: 'short' }}</p>
-  </mat-card>
-  <mat-card *ngIf="events.length === 0" class="event">
-    <mat-card-header>
-      <mat-card-title>There are no events yet</mat-card-title>
-    </mat-card-header>
-  </mat-card>
-</ul> -->
 <mat-accordion>
   <mat-expansion-panel
     *ngFor="let event of events"
     [expanded]="event.id === this.selectedEvent?.id"
-    (opened)="handleOpen(event)">
+    (click)="handleOpen(event)">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{ event.attributes.Title }}

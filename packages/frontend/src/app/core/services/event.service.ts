@@ -54,7 +54,7 @@ export class EventService {
     this._selectedLocation.next(coords)
   }
 
-  public selectEvent(event: Event): void {
+  public selectEvent(event: Event | null): void {
     this._selectedEvent.next(event)
   }
 }
