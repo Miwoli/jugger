@@ -1,13 +1,15 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core'
 import { View, Map, Feature, MapBrowserEvent } from 'ol'
-import { FeatureLike } from 'ol/Feature'
 import { Point } from 'ol/geom'
+import { OSM } from 'ol/source'
+import { easeOut } from 'ol/easing'
+import Select, { SelectEvent } from 'ol/interaction/Select'
 import TileLayer from 'ol/layer/Tile'
 import VectorLayer from 'ol/layer/Vector'
-import { OSM } from 'ol/source'
 import VectorSource from 'ol/source/Vector'
 import { EventService } from 'src/app/core/services/event.service'
 import { Event } from '../../core/models/Event'
+import { defaultEvent, selectedCoordinates, selectedEvent } from './mapStyles'
 
 @Component({
   selector: 'jugger-map',
@@ -19,9 +21,11 @@ export class MapComponent implements OnInit, AfterViewInit {
   public status!: Pick<Event, 'attributes'>
 
   public pointsLayer!: VectorLayer<VectorSource>
-  private _selected!: FeatureLike | null
+  public newEventLayer!: VectorLayer<VectorSource>
+
   private _events: Feature[] = []
   private _isEditMode!: boolean
+  private _select: Select = new Select({ style: selectedEvent })
 
   constructor(private _eventService: EventService) {}
 
@@ -30,18 +34,29 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.pointsLayer = new VectorLayer({
       source: new VectorSource({
         features: this._events
-      })
+      }),
+      style: defaultEvent
+    })
+    this.newEventLayer = new VectorLayer({
+      source: new VectorSource({}),
+      style: selectedCoordinates
     })
 
-    this._eventService.$isCreateMode.subscribe(
-      isEdit => (this._isEditMode = isEdit)
-    )
+    this._eventService.$isCreateMode.subscribe(isEdit => {
+      this._isEditMode = isEdit
+      if (!isEdit) this.newEventLayer.getSource()?.clear()
+    })
 
-    // this.map.on('singleclick', event => {
-    //   this.newEvent(event.coordinate)
-    // })
+    this._eventService.$selectedEvent.subscribe(event => {
+      this._select.getFeatures().clear()
+      if (event) {
+        const foundEvent = this._events.find(e => e.get('id') === event.id)
 
-    // this.eventService.getEvents().subscribe(events => console.log(events))
+        if (foundEvent) {
+          this._moveToFeature(foundEvent)
+        }
+      }
+    })
   }
 
   ngAfterViewInit(): void {
@@ -50,7 +65,8 @@ export class MapComponent implements OnInit, AfterViewInit {
         new TileLayer({
           source: new OSM()
         }),
-        this.pointsLayer
+        this.pointsLayer,
+        this.newEventLayer
       ],
       target: 'map',
       view: new View({
@@ -60,15 +76,19 @@ export class MapComponent implements OnInit, AfterViewInit {
       })
     })
 
+    this.map.addInteraction(this._select)
+
     this.map.on('singleclick', event => {
       if (this._isEditMode) {
-        this._eventService.selectCoordinates(event.coordinate)
-      } else {
-        this.map.forEachFeatureAtPixel(event.pixel, feature => {
-          this._eventService.selectEvent(feature.get('attributes'))
+        this._addTempFeature(event)
+      }
+    })
 
-          return true
-        })
+    this._select.on('select', (e: SelectEvent) => {
+      if (e.selected.length !== 0) {
+        this._eventService.selectEvent(e.selected[0].get('attributes'))
+      } else {
+        this._eventService.selectEvent(null)
       }
     })
   }
@@ -79,6 +99,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         event =>
           new Feature({
             geometry: new Point(event.attributes.Coordinates),
+            id: event.id,
             attributes: event
           })
       )
@@ -87,21 +108,28 @@ export class MapComponent implements OnInit, AfterViewInit {
     })
   }
 
-  // TODO: Use while implementing event creation
-  // private _newEvent(coords: number[]): void {
-  //   this.eventService.createEvent({
-  //     Title: 'Lorem ipsum',
-  //     Description: 'Lorem ipsum dolor sit amet',
-  //     Date: Date(),
-  //     Coordinates: coords
-  //   })
+  private _addTempFeature(event: MapBrowserEvent<MouseEvent>): void {
+    this._eventService.selectCoordinates(event.coordinate)
+    this.newEventLayer.getSource()?.clear()
 
-  //   this.getEvents()
-  //   this.pointsLayer.getSource()?.addFeature(
-  //     new Feature({
-  //       geometry: new Point(coords),
-  //       name: 'lorem ipsum'
-  //     })
-  //   )
-  // }
+    const tempFeature = new Feature({
+      geometry: new Point(event.coordinate),
+      style: selectedCoordinates
+    })
+
+    this.newEventLayer.getSource()?.addFeature(tempFeature)
+  }
+
+  private _moveToFeature(feature: Feature): void {
+    this._select.getFeatures().push(feature)
+
+    const point = feature.getGeometry() as unknown as Point
+
+    this.map.getView().animate({
+      center: point.getCoordinates(),
+      zoom: 8,
+      easing: easeOut,
+      duration: 1000
+    })
+  }
 }

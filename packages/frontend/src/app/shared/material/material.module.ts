@@ -11,6 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatInputModule } from '@angular/material/input'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatExpansionModule } from '@angular/material/expansion'
 import {
   NgxMatDateFormats,
   NgxMatDatetimePickerModule,
@@ -30,6 +31,7 @@ const materialModules = [
   MatInputModule,
   MatSnackBarModule,
   MatDatepickerModule,
+  MatExpansionModule,
   NgxMatDatetimePickerModule,
   NgxMatMomentModule
 ]

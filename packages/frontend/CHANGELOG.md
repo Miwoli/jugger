@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/Miwoli/jugger/compare/frontend@0.9.0...frontend@0.10.0) (2022-12-13)
+
+### Features
+
+- create event with coords selection from map ([5b640a6](https://github.com/Miwoli/jugger/commit/5b640a6262a5b652f3d367f1891c9c8c34714535))
+- wIP: Event display improvement ([8e4f7da](https://github.com/Miwoli/jugger/commit/8e4f7daff020546774ceeb0056a70336ae9f4916))
+
 # [0.9.0](https://github.com/Miwoli/jugger/compare/frontend@0.8.0...frontend@0.9.0) (2022-12-07)
 
 ### Features
