@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/Miwoli/jugger/compare/frontend@0.10.0...frontend@0.11.0) (2022-12-14)
+
+### Features
+
+- implement RWD ([edfa277](https://github.com/Miwoli/jugger/commit/edfa277a386d38032971753cdf906e9a5dbdff3e))
+
 # [0.10.0](https://github.com/Miwoli/jugger/compare/frontend@0.9.0...frontend@0.10.0) (2022-12-13)
 
 ### Features

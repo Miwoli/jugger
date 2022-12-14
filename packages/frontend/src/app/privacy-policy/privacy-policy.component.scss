@@ -1,8 +1,13 @@
 @use '../../assets/styles/vars' as vars;
 
 .wrapper {
-  height: calc(100vh - vars.$overlay-height);
   padding: 10px;
+  overflow: auto;
+  height: calc(100vh - vars.$overlay-height);
+
+  @media screen and (max-width: 599px) {
+    height: calc(100vh - vars.$overlay-height-sm);
+  }
 }
 
 mat-card {

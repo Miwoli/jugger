@@ -7,11 +7,7 @@
   flex-direction: column;
 }
 
-.events {
+.mat-accordion {
   overflow: auto;
   height: 100%;
-}
-
-.event:not(:first-child) {
-  margin-top: 10px;
 }
