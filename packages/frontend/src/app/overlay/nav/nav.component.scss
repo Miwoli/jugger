@@ -9,6 +9,12 @@
   padding: 10px;
   box-shadow: 2px 2px 5px black;
 
+  h1 {
+    @media screen and (max-width: 1024px) {
+      font-size: 1rem;
+    }
+  }
+
   .version {
     font-size: 0.6em;
     vertical-align: bottom;
@@ -19,6 +25,12 @@
 
     & > *:not(:last-child) {
       margin-right: 10px;
+    }
+
+    .btn-text {
+      @media screen and (max-width: 1024px) {
+        display: none;
+      }
     }
   }
 }
