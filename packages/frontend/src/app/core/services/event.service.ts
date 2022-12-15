@@ -28,11 +28,18 @@ export class EventService {
   private _selectedEvent = new BehaviorSubject<Event | null>(null)
   public $selectedEvent = this._selectedEvent.asObservable()
 
-  public getEvents(): Observable<Event[]> {
-    return this._httpClient.get<EventsList>(`${this.apiUrl}/events`).pipe(
-      map(response => response.data),
-      tap(data => this._$cachedEvents.next(data))
-    )
+  private _events!: Event[]
+  private _$events = new BehaviorSubject(this._events)
+  public $events = this._$events.asObservable()
+
+  public fetchEvents(): void {
+    this._httpClient
+      .get<EventsList>(`${this.apiUrl}/events`)
+      .pipe(
+        map(response => response.data),
+        tap(data => this._$cachedEvents.next(data))
+      )
+      .subscribe()
   }
 
   public getEvent(id: number): Observable<Event> {
@@ -43,6 +50,12 @@ export class EventService {
     return this._httpClient
       .post<EventResponse>(`${this.apiUrl}/events`, { data: { ...eventAttrs } })
       .pipe(map(res => res.data))
+  }
+
+  public removeEvent(id: number): Observable<void> {
+    return this._httpClient
+      .delete<void>(`${this.apiUrl}/events/${id}`)
+      .pipe(tap(() => {}))
   }
 
   public toggleCreateMode(val: boolean): void {

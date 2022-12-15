@@ -104,6 +104,7 @@ export class MapComponent implements OnInit, AfterViewInit {
           })
       )
 
+      this.pointsLayer.getSource()?.clear()
       this.pointsLayer.getSource()?.addFeatures(this._events)
     })
   }

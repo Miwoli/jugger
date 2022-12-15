@@ -18,12 +18,6 @@ export class CreateFormComponent implements OnInit {
 
   public form: FormGroup<CreateEventForm> = CreateEventFormBuilder.buildForm()
 
-  public editorConfig: AngularEditorConfig = {
-    toolbarHiddenButtons: [
-      ['fontName', 'insertImage', 'insertVideo', 'customClasses']
-    ]
-  }
-
   constructor(private _eventService: EventService) {}
 
   ngOnInit() {

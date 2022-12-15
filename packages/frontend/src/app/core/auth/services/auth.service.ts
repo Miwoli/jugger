@@ -40,6 +40,10 @@ export class AuthService {
     return this.localStorage.getItem('token')
   }
 
+  public getUsername(): string | null {
+    return this.localStorage.getItem('username')
+  }
+
   private _openAuthModal(): void {
     const modalRef = this.modal.open(AuthModalComponent, {
       width: '400px',
@@ -65,6 +69,7 @@ export class AuthService {
       .pipe(
         tap(res => {
           this.localStorage.setItem('token', res.jwt)
+          this.localStorage.setItem('username', res.user.username)
           this._isLoggedIn.next(true)
         })
       )
@@ -79,6 +84,7 @@ export class AuthService {
       .pipe(
         tap(res => {
           this.localStorage.setItem('token', res.jwt)
+          this.localStorage.setItem('username', res.user.username)
           this._isLoggedIn.next(true)
         })
       )
@@ -104,6 +110,7 @@ export class AuthService {
 
   private _logout(): void {
     this.localStorage.removeItem('token')
+    this.localStorage.removeItem('username')
     this._isLoggedIn.next(false)
   }
 }
