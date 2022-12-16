@@ -1,7 +1,8 @@
 <div class="wrapper">
   <jugger-map></jugger-map>
-  <jugger-list *ngIf="!isCreateMode; else createForm"></jugger-list>
-  <ng-template #createForm>
-    <jugger-create-form></jugger-create-form>
-  </ng-template>
+  <ng-container [ngSwitch]="eventsListMode">
+    <jugger-list *ngSwitchCase="'list'"></jugger-list>
+    <jugger-create-form *ngSwitchCase="'create'"></jugger-create-form>
+    <jugger-edit-form *ngSwitchCase="'edit'"></jugger-edit-form>
+  </ng-container>
 </div>

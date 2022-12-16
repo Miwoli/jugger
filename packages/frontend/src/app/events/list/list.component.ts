@@ -43,7 +43,7 @@ export class ListComponent implements OnInit {
     })
   }
 
-  public edit(event: Event) {
-    console.log(event)
+  public edit() {
+    this._eventService.toggleEventsListMode('edit')
   }
 }

@@ -4,6 +4,7 @@ import { Observable, map, tap, ReplaySubject } from 'rxjs'
 import {
   Event,
   EventAttributes,
+  EventsListMode,
   EventResponse,
   EventsList
 } from '../models/Event'
@@ -19,10 +20,10 @@ export class EventService {
   private _$cachedEvents = new ReplaySubject<Event[]>()
   public $cachedEvents: Observable<Event[]> = this._$cachedEvents.asObservable()
 
-  private _isCreateMode = new BehaviorSubject(false)
-  public $isCreateMode = this._isCreateMode.asObservable()
+  private _eventsListMode = new BehaviorSubject<EventsListMode>('list')
+  public $eventsListMode = this._eventsListMode.asObservable()
 
-  private _selectedLocation = new BehaviorSubject([0, 0])
+  private _selectedLocation = new ReplaySubject<number[]>()
   public $selectedLocation = this._selectedLocation.asObservable()
 
   private _selectedEvent = new BehaviorSubject<Event | null>(null)
@@ -52,15 +53,22 @@ export class EventService {
       .pipe(map(res => res.data))
   }
 
+  public editEvent(id: number, eventAttrs: EventAttributes): Observable<Event> {
+    return this._httpClient
+      .put<EventResponse>(`${this.apiUrl}/events/${id}`, {
+        data: { ...eventAttrs }
+      })
+      .pipe(map(res => res.data))
+  }
+
   public removeEvent(id: number): Observable<void> {
     return this._httpClient
       .delete<void>(`${this.apiUrl}/events/${id}`)
       .pipe(tap(() => {}))
   }
 
-  public toggleCreateMode(val: boolean): void {
-    this._isCreateMode.next(val)
-    this._selectedLocation.next([0, 0])
+  public toggleEventsListMode(val: EventsListMode): void {
+    this._eventsListMode.next(val)
   }
 
   public selectCoordinates(coords: number[]): void {

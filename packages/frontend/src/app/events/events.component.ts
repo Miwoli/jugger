@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { EventsListMode } from '../core/models/Event'
 import { EventService } from '../core/services/event.service'
 
 @Component({
@@ -9,11 +10,11 @@ import { EventService } from '../core/services/event.service'
 export class EventsComponent implements OnInit {
   constructor(private _eventService: EventService) {}
 
-  public isCreateMode!: boolean
+  public eventsListMode!: EventsListMode
 
   ngOnInit(): void {
-    this._eventService.$isCreateMode.subscribe(
-      value => (this.isCreateMode = value)
+    this._eventService.$eventsListMode.subscribe(
+      mode => (this.eventsListMode = mode)
     )
   }
 }

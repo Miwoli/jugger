@@ -8,7 +8,7 @@ import TileLayer from 'ol/layer/Tile'
 import VectorLayer from 'ol/layer/Vector'
 import VectorSource from 'ol/source/Vector'
 import { EventService } from 'src/app/core/services/event.service'
-import { Event } from '../../core/models/Event'
+import { Event, EventsListMode } from '../../core/models/Event'
 import { defaultEvent, selectedCoordinates, selectedEvent } from './mapStyles'
 
 @Component({
@@ -24,7 +24,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   public newEventLayer!: VectorLayer<VectorSource>
 
   private _events: Feature[] = []
-  private _isEditMode!: boolean
+  private _eventsListMode!: EventsListMode
   private _select: Select = new Select({ style: selectedEvent })
 
   constructor(private _eventService: EventService) {}
@@ -42,9 +42,10 @@ export class MapComponent implements OnInit, AfterViewInit {
       style: selectedCoordinates
     })
 
-    this._eventService.$isCreateMode.subscribe(isEdit => {
-      this._isEditMode = isEdit
-      if (!isEdit) this.newEventLayer.getSource()?.clear()
+    this._eventService.$eventsListMode.subscribe(mode => {
+      this._eventsListMode = mode
+      if (this._eventsListMode === 'list')
+        this.newEventLayer.getSource()?.clear()
     })
 
     this._eventService.$selectedEvent.subscribe(event => {
@@ -79,7 +80,10 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.map.addInteraction(this._select)
 
     this.map.on('singleclick', event => {
-      if (this._isEditMode) {
+      if (
+        this._eventsListMode === 'edit' ||
+        this._eventsListMode === 'create'
+      ) {
         this._addTempFeature(event)
       }
     })

@@ -25,6 +25,8 @@ export interface EventAttributes {
   CreatedBy?: Author
 }
 
+export type EventsListMode = 'list' | 'create' | 'edit'
+
 interface Author {
   data: {
     id: number

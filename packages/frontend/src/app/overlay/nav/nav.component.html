@@ -9,7 +9,11 @@
   </a>
   <span class="actions">
     <button *ngIf="isLoggedIn" mat-stroked-button (click)="toggleEditMode()">
-      <ng-container *ngIf="isEditMode; else edit">
+      <ng-container
+        *ngIf="
+          eventsListMode === 'create' || eventsListMode === 'edit';
+          else edit
+        ">
         <mat-icon>cancel</mat-icon>
         <span class="btn-text"> Cancel</span>
       </ng-container>
