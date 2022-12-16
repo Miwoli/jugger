@@ -3,10 +3,10 @@
 .wrapper {
   padding: 10px;
   overflow: auto;
-  height: calc(100vh - vars.$overlay-height);
+  height: calc(100dvh - vars.$overlay-height);
 
   @media screen and (max-width: 599px) {
-    height: calc(100vh - vars.$overlay-height-sm);
+    height: calc(100dvh - vars.$overlay-height-sm);
   }
 }
 

@@ -45,6 +45,44 @@ export default factories.createCoreController(
       })
 
       return this.transformResponse(entries)
+    },
+
+    async update(ctx) {
+      const { id } = ctx.params
+
+      const event = await strapi.entityService.findOne('api::event.event', id, {
+        populate: {
+          CreatedBy: {
+            fields: ['id']
+          }
+        }
+      })
+
+      if (!event || event.CreatedBy.id !== ctx.state.user.id) {
+        return ctx.unauthorized()
+      }
+
+      const response = await super.update(ctx)
+      return response
+    },
+
+    async delete(ctx) {
+      const { id } = ctx.params
+
+      const event = await strapi.entityService.findOne('api::event.event', id, {
+        populate: {
+          CreatedBy: {
+            fields: ['id']
+          }
+        }
+      })
+
+      if (!event || event.CreatedBy.id !== ctx.state.user.id) {
+        return ctx.unauthorized()
+      }
+
+      const response = await super.delete(ctx)
+      return response
     }
   })
 )

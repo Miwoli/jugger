@@ -11,3 +11,17 @@
   overflow: auto;
   height: 100%;
 }
+
+.mat-action-row {
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px;
+
+  &.has-actions {
+    justify-content: space-between;
+  }
+
+  .created-by {
+    margin-right: 8px;
+  }
+}

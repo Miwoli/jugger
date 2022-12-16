@@ -17,7 +17,7 @@ export const CreateEventFormBuilder = {
         { value: moment(), disabled: true },
         {
           nonNullable: true,
-          validators: [Validators.required]
+          validators: Validators.required
         }
       ),
       Coordinates: new FormControl(

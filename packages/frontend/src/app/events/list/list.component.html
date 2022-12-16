@@ -14,8 +14,25 @@
     <p>
       {{ event.attributes.Description }}
     </p>
-    <mat-action-row>
-      By: {{ event.attributes.CreatedBy?.data?.attributes?.username }}
+    <mat-action-row
+      [ngClass]="{
+        'has-actions':
+          event.attributes.CreatedBy?.data?.attributes?.username === activeUser
+      }">
+      <span
+        *ngIf="
+          event.attributes.CreatedBy?.data?.attributes?.username === activeUser
+        ">
+        <button mat-stroked-button (click)="remove(event.id)">
+          <mat-icon>delete</mat-icon><span> Remove</span>
+        </button>
+        <button mat-stroked-button (click)="edit()">
+          <mat-icon>edit</mat-icon><span> Edit</span>
+        </button>
+      </span>
+      <span class="created-by">
+        By: {{ event.attributes.CreatedBy?.data?.attributes?.username }}
+      </span>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
