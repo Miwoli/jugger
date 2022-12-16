@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/Miwoli/jugger/compare/frontend@0.11.0...frontend@0.12.0) (2022-12-16)
+
+### Features
+
+- create delete events ([d33de46](https://github.com/Miwoli/jugger/commit/d33de46333dd0da75ad417dff534f6bad82415dd))
+- implement edit event ([d7e698b](https://github.com/Miwoli/jugger/commit/d7e698bfae15f1a2b391f1943f72910c5ef4f303))
+- validate delete on backend ([e020b41](https://github.com/Miwoli/jugger/commit/e020b415995adf289a057d041129d37c5b46f52d))
+
 # [0.11.0](https://github.com/Miwoli/jugger/compare/frontend@0.10.0...frontend@0.11.0) (2022-12-14)
 
 ### Features
