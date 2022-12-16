@@ -14,7 +14,11 @@
     <p>
       {{ event.attributes.Description }}
     </p>
-    <mat-action-row>
+    <mat-action-row
+      [ngClass]="{
+        'has-actions':
+          event.attributes.CreatedBy?.data?.attributes?.username === activeUser
+      }">
       <span
         *ngIf="
           event.attributes.CreatedBy?.data?.attributes?.username === activeUser

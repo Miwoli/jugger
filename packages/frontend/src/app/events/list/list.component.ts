@@ -20,8 +20,9 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activeUser = this._authService.getUsername()
-
+    this._authService.$isLoggedIn.subscribe(() => {
+      this.activeUser = this._authService.getUsername()
+    })
     this._eventService.$cachedEvents.subscribe(events => (this.events = events))
     this._eventService.$selectedEvent.subscribe(
       event => (this.selectedEvent = event)

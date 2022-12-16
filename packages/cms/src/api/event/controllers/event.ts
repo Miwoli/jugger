@@ -45,6 +45,30 @@ export default factories.createCoreController(
       })
 
       return this.transformResponse(entries)
+    },
+
+    async delete(ctx) {
+      const { id } = ctx.params
+
+      const event = await strapi.entityService.findOne('api::event.event', id, {
+        populate: {
+          CreatedBy: {
+            fields: ['id']
+          }
+        }
+      })
+
+      if (!event || event.CreatedBy.id !== ctx.state.user.id) {
+        return ctx.unauthorized()
+      }
+
+      const deletedEvent = await strapi.entityService.delete(
+        'api::event.event',
+        id
+      )
+
+      const sanitizedEntity = await this.sanitizeOutput(deletedEvent, ctx)
+      return this.transformResponse(sanitizedEntity)
     }
   })
 )
