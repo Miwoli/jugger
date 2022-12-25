@@ -25,10 +25,45 @@ export default factories.createCoreController(
       return this.transformResponse(sanitizedEntity)
     },
 
-    async find() {
+    async find(ctx) {
+      const query = ctx.request.querystring.split('&').map(param => {
+        const [key, value] = param.split('=')
+        return { key, value }
+      })
+
+      const queryObject = query.reduce(
+        (acc, cur) => ({
+          ...acc,
+          [cur.key]: cur.value
+        }),
+        {}
+      )
+
+      const dateFrom =
+        queryObject.DateFrom === '' || queryObject.DateFrom === 'null'
+          ? new Date(1970, 0, 1).toISOString()
+          : queryObject.DateFrom
+
+      const dateTo =
+        queryObject.DateTo === '' || queryObject.DateTo === 'null'
+          ? new Date(9999, 11, 11).toISOString()
+          : queryObject.DateTo
+
       const entries = await strapi.entityService.findMany('api::event.event', {
         sort: {
           Date: 'asc'
+        },
+        filters: {
+          $and: [
+            { Title: { $containsi: queryObject.Title } },
+            { Description: { $containsi: queryObject.Description } },
+            // { Coordinates: { $between: queryObject.Coordinates } }, TODO: Find between four bounding box params returend from nominatim API
+            {
+              Date: {
+                $between: [dateFrom, dateTo]
+              }
+            }
+          ]
         },
         populate: {
           CreatedBy: {

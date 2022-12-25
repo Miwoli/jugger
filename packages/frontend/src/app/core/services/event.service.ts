@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Observable, map, tap, ReplaySubject } from 'rxjs'
 import {
   Event,
@@ -10,6 +10,8 @@ import {
 } from '../models/Event'
 import { environment } from 'src/environments/environment'
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject'
+import { Filters } from '../models/Filters'
+import moment from 'moment'
 
 @Injectable()
 export class EventService {
@@ -33,9 +35,19 @@ export class EventService {
   private _$events = new BehaviorSubject(this._events)
   public $events = this._$events.asObservable()
 
-  public fetchEvents(): void {
+  public fetchEvents(query?: Filters): void {
+    const params = new HttpParams({
+      fromObject: {
+        Title: query?.Title ?? '',
+        Description: query?.Description ?? '',
+        Coordinates: query?.Coordinates ?? '',
+        DateFrom: query?.Date ? moment(query?.Date?.start).toISOString() : '',
+        DateTo: query?.Date ? moment(query?.Date?.end).toISOString() : ''
+      }
+    })
+
     this._httpClient
-      .get<EventsList>(`${this.apiUrl}/events`)
+      .get<EventsList>(`${this.apiUrl}/events`, { params })
       .pipe(
         map(response => response.data),
         tap(data => this._$cachedEvents.next(data))
