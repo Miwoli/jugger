@@ -76,5 +76,7 @@ export class FiltersComponent {
 
   public remove(key: FiltersNames) {
     this.activeFilters[key] = null
+    this.form.get(key)?.setValue(null)
+    this.search()
   }
 }
