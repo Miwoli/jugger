@@ -14,7 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { SidenavComponent } from './overlay/sidenav/sidenav.component'
 import { CreateFormComponent } from './events/create-form/create-form.component'
 import { ReactiveFormsModule } from '@angular/forms';
-import { EditFormComponent } from './events/edit-form/edit-form.component'
+import { EditFormComponent } from './events/edit-form/edit-form.component';
+import { FiltersComponent } from './events/filters/filters.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EditFormComponent } from './events/edit-form/edit-form.component'
     FooterComponent,
     SidenavComponent,
     CreateFormComponent,
-    EditFormComponent
+    EditFormComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
