@@ -57,7 +57,6 @@ export default factories.createCoreController(
           $and: [
             { Title: { $containsi: queryObject.Title } },
             { Description: { $containsi: queryObject.Description } },
-            // { Coordinates: { $between: queryObject.Coordinates } }, TODO: Find between four bounding box params returend from nominatim API
             {
               Date: {
                 $between: [dateFrom, dateTo]

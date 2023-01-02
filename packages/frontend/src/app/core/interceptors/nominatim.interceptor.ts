@@ -6,29 +6,27 @@ import {
   HttpInterceptor
 } from '@angular/common/http'
 import { Observable } from 'rxjs'
-import { AuthService } from '../services/auth.service'
 import { environment } from 'src/environments/environment'
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-  apiUrl = environment.apiUrl
+export class NominatimInterceptor implements HttpInterceptor {
+  nominatim = environment.nominatim
 
-  constructor(private _authService: AuthService) {}
+  constructor() {}
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    if (
-      this._authService.checkIfLoggedIn() &&
-      request.url.includes(this.apiUrl)
-    ) {
+  ): Observable<HttpEvent<unknown>> {
+    if (request.url.includes(this.nominatim)) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${this._authService.getToken()}`
+          'Access-Control-Allow-Methods': 'GET, OPTIONS',
+          'Access-Control-Allow-Origin': '*'
         }
       })
     }
+
     return next.handle(request)
   }
 }

@@ -10,7 +10,7 @@ export const FiltersFormBuilder = {
         start: new FormControl(),
         end: new FormControl()
       }),
-      Coordinates: new FormControl('')
+      Location: new FormControl('')
     })
   }
 }

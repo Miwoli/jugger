@@ -5,10 +5,10 @@ export interface Filters {
   Title: string | null
   Description: string | null
   Date: DateRange<Moment> | null
-  Coordinates: string | null
+  Location: string | null
 }
 
-export type FiltersNames = 'Title' | 'Description' | 'Coordinates' | 'Date'
+export type FiltersNames = 'Title' | 'Description' | 'Location' | 'Date'
 
 export interface SelectedDateRange {
   start: Moment | null

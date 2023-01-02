@@ -29,14 +29,14 @@ export class FiltersComponent {
   public activeFilters: Filters = {
     Title: null,
     Description: null,
-    Coordinates: null,
+    Location: null,
     Date: null
   }
 
   public filtersIcons = {
     Title: 'title',
     Description: 'subtitles',
-    Coordinates: 'pin_drop',
+    Location: 'pin_drop',
     Date: 'date_range'
   }
 

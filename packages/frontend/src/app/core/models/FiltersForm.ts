@@ -5,7 +5,7 @@ export interface FiltersForm {
   Title?: FormControl<string | null>
   Description?: FormControl<string | null>
   Date?: FormGroup<FiltersDateRange>
-  Coordinates?: FormControl<string | null>
+  Location?: FormControl<string | null>
 }
 
 export interface FiltersDateRange {
