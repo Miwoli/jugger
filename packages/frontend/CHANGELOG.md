@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/Miwoli/jugger/compare/frontend@0.12.0...frontend@0.13.0) (2023-01-02)
+
+### Features
+
+- filter events by title, description or date ([2f51efa](https://github.com/Miwoli/jugger/commit/2f51efa22ce5116ea048f50f828511dd92b420f7))
+- **filters.component.ts:** clear filter with chip cross ([8caa4e6](https://github.com/Miwoli/jugger/commit/8caa4e687ebe25d4a285df5524eb297e116f0c1f))
+- search events by location ([80fa0f2](https://github.com/Miwoli/jugger/commit/80fa0f297d9d47cb5a07520b13c8d38e6de2780c))
+
 # [0.12.0](https://github.com/Miwoli/jugger/compare/frontend@0.11.0...frontend@0.12.0) (2022-12-16)
 
 ### Features

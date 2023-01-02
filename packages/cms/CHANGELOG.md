@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Miwoli/jugger/compare/cms@0.7.0...cms@0.8.0) (2023-01-02)
+
+### Features
+
+- filter events by title, description or date ([2f51efa](https://github.com/Miwoli/jugger/commit/2f51efa22ce5116ea048f50f828511dd92b420f7))
+- search events by location ([80fa0f2](https://github.com/Miwoli/jugger/commit/80fa0f297d9d47cb5a07520b13c8d38e6de2780c))
+
 # [0.7.0](https://github.com/Miwoli/jugger/compare/cms@0.6.1...cms@0.7.0) (2022-12-16)
 
 ### Features
