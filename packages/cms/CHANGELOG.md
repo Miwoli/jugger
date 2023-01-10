@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Miwoli/jugger/compare/cms@0.8.0...cms@0.9.0) (2023-01-10)
+
+### Features
+
+- limit list + minor enhancments ([67bd9b1](https://github.com/Miwoli/jugger/commit/67bd9b18b9a6dbddb49d508f5e0b29316303f54b))
+
 # [0.8.0](https://github.com/Miwoli/jugger/compare/cms@0.7.0...cms@0.8.0) (2023-01-02)
 
 ### Features
