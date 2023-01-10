@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
+import { iif, of, switchMap } from 'rxjs'
 import { AuthService } from 'src/app/core/auth/services/auth.service'
 import { Event } from 'src/app/core/models/Event'
 import { EventService } from 'src/app/core/services/event.service'
+import { ConfirmModalComponent } from 'src/app/shared/confirm-modal/confirm-modal.component'
 
 @Component({
   selector: 'jugger-list',
@@ -16,7 +18,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private _eventService: EventService,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _modal: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -36,11 +39,22 @@ export class ListComponent implements OnInit {
   }
 
   public remove(id: number) {
-    this._eventService.removeEvent(id).subscribe({
-      next: () => {
-        this._eventService.fetchEvents()
-      }
+    const modalRef = this._modal.open(ConfirmModalComponent, {
+      width: '400px'
     })
+
+    modalRef
+      .afterClosed()
+      .pipe(
+        switchMap(result =>
+          iif(() => result, this._eventService.removeEvent(id), of(null))
+        )
+      )
+      .subscribe({
+        next: () => {
+          this._eventService.fetchEvents()
+        }
+      })
   }
 
   public edit() {
