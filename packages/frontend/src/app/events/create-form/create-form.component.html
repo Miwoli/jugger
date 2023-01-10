@@ -24,6 +24,7 @@
           matInput
           formControlName="Date"
           placeholder="1.01.2020 12:00"
+          [min]="minDate"
           [ngxMatDatetimePicker]="picker" />
         <mat-hint>Use datepicker to select</mat-hint>
         <mat-error *ngIf="this.form.get('Date')?.hasError('required')">

@@ -13,3 +13,13 @@ p {
 mat-icon {
   vertical-align: middle;
 }
+
+.socials {
+  display: inline-block;
+  vertical-align: middle;
+  height: 24px;
+
+  a {
+    margin: 0 5px;
+  }
+}
