@@ -41,7 +41,7 @@ export default factories.createCoreController(
 
       const dateFrom =
         queryObject.DateFrom === '' || queryObject.DateFrom === 'null'
-          ? new Date(1970, 0, 1).toISOString()
+          ? new Date().toISOString()
           : queryObject.DateFrom
 
       const dateTo =

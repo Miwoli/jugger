@@ -4,7 +4,7 @@ import { CreateEventForm } from 'src/app/core/models/CreateEventForm'
 import { EventService } from 'src/app/core/services/event.service'
 import { NgxMatDatetimePicker } from '@angular-material-components/datetime-picker'
 import { EditEventFormBuilder } from './EditEventFormBuilder'
-import { Moment } from 'moment'
+import moment, { Moment } from 'moment'
 import { EventAttributes } from 'src/app/core/models/Event'
 
 @Component({
@@ -16,6 +16,7 @@ export class EditFormComponent implements OnInit {
   //FIXME: Should be merged with create-form, will refactor it one day. (maybe)
   @ViewChild('picker') picker!: NgxMatDatetimePicker<Moment>
 
+  public minDate = moment()
   public form!: FormGroup<CreateEventForm>
   private _id!: number
 

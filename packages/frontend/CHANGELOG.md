@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/Miwoli/jugger/compare/frontend@0.13.0...frontend@0.14.0) (2023-01-10)
+
+### Features
+
+- add keywords ([8553329](https://github.com/Miwoli/jugger/commit/85533298add193fc8cc2fb56d313a5d54bc097cd))
+- **confirm-modal.component:** create confirm modal component ([c719f12](https://github.com/Miwoli/jugger/commit/c719f12103e063d0ec27bac3cc9dfc28b2aace45))
+- limit list + minor enhancments ([67bd9b1](https://github.com/Miwoli/jugger/commit/67bd9b18b9a6dbddb49d508f5e0b29316303f54b))
+
 # [0.13.0](https://github.com/Miwoli/jugger/compare/frontend@0.12.0...frontend@0.13.0) (2023-01-02)
 
 ### Features

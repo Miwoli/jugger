@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import moment from 'moment'
 
 @Component({
   selector: 'jugger-footer',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core'
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  constructor() {}
+  currentYear = moment().year()
 }

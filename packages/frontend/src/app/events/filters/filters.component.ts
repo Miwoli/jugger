@@ -51,6 +51,7 @@ export class FiltersComponent {
     Object.keys(this.activeFilters).forEach(
       (key: string) => (this.activeFilters[key as FiltersNames] = null)
     )
+    this._eventService.fetchEvents()
   }
 
   public search() {
@@ -76,7 +77,9 @@ export class FiltersComponent {
 
   public remove(key: FiltersNames) {
     this.activeFilters[key] = null
-    this.form.get(key)?.setValue(null)
+    key === 'Date'
+      ? this.form.get(key)?.setValue({ start: null, end: null })
+      : this.form.get(key)?.setValue(null)
     this.search()
   }
 }
