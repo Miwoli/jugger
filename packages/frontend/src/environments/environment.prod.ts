@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'api.jugger.pl',
+  apiUrl: 'https://api.jugger.pl/api',
   nominatim: 'https://nominatim.openstreetmap.org/'
 }
