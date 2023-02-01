@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/Miwoli/jugger/compare/frontend@1.0.0...frontend@1.0.1) (2023-02-01)
+
+### Bug Fixes
+
+- **environment.prod.ts:** fix apu url ([489be68](https://github.com/Miwoli/jugger/commit/489be68afefbaf7b7bacb09506867ae1f62b08b8))
+
+# [1.0.0](https://github.com/Miwoli/jugger/compare/frontend@0.14.0...frontend@1.0.0) (2023-01-26)
+
+**Note:** Version bump only for package frontend
+
 # [0.14.0](https://github.com/Miwoli/jugger/compare/frontend@0.13.0...frontend@0.14.0) (2023-01-10)
 
 ### Features
